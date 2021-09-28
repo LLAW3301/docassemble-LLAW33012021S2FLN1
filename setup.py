@@ -42,10 +42,10 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
                 out.setdefault(package, []).append(prefix+name)
     return out
 
-setup(name='docassemble.piov0007',
+setup(name='docassemble.LLAW33012021S2FLN1',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='# docassemble.piov0007\r\n\r\nA docassemble extension.\r\n\r\n## Author\r\n\r\nRobert Piovesan, piov0007@flinders.edu.au\r\n\r\n',
+      long_description='# docassemble.LLAW33012021S2FLN1\n\nA docassemble extension.\n\n## Author\n\nRobert Piovesan, piov0007@flinders.edu.au\n\n',
       long_description_content_type='text/markdown',
       author='Robert Piovesan',
       author_email='piov0007@flinders.edu.au',
@@ -55,6 +55,6 @@ setup(name='docassemble.piov0007',
       namespace_packages=['docassemble'],
       install_requires=[],
       zip_safe=False,
-      package_data=find_package_data(where='docassemble/piov0007/', package='docassemble.piov0007'),
+      package_data=find_package_data(where='docassemble/LLAW33012021S2FLN1/', package='docassemble.LLAW33012021S2FLN1'),
      )
 

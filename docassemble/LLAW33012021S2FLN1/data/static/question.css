@@ -1,0 +1,56 @@
+.addr-input .form-control{
+  width: 100% !important;
+}
+
+.review-input .form-control{
+  width: 100% !important;
+}
+
+.resname .form-control{
+  width: 100% !important;
+}
+
+.form-control{
+  border: 1px solid #a7a7a7 !important;
+  border-radius: 5px !important;
+  background-color: #ffffff !important;
+}
+
+.more-help{
+  color: #01a049 !important;
+}
+
+.more-help:hover{
+  text-decoration: underline !important;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e;
+}
+
+
+.postcode-item {
+    border: 1px #a7a7a7 solid;
+    padding: 5px;
+    margin: 5px;
+    margin-right: 0;
+    margin-left: 0;
+    display: block;
+    border-radius: 5px;
+    background-color: #abfffe;
+}
+.postcode-item:hover {
+    background-color: #c9fffe;
+}
+
+.tab{
+  margin-left: 40px;
+}

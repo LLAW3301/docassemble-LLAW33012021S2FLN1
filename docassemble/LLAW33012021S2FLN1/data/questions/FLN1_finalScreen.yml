@@ -1,0 +1,54 @@
+mandatory: True
+event: final_screen
+question: Final Report
+subquestion: |
+
+  You have now completed your report.
+  Here is your finished document.
+  
+  <a class="btn btn-primary" href=${ report.url_for(attachment=True) }>Download Report</a>
+  
+  For your convenience, this report has also been emailed to the address you provided earlier.
+  
+  **You can submit this report to the SA Commissioner for Equal Opportunity. This link is here to direct you:**
+  
+  <a href="https://forms.sa.gov.au/#/form/59964287ad9c5a332435b63f/app/613ab1264d43317950b665fb">SA Commissioner for Equal Opportunity</a>
+  
+  <br/>
+  <hr>
+  ***If your experience has been traumatic or mentally distressing to you, please contact mental health services for support:***
+  
+  <p>
+  <a href="https://headspace.org.au/eheadspace/">eheadspace</a> for individuals
+  ages 12-25. <br />
+  Call 1800 650 890, 9am-1am AEST OR Connect 7 days a week through online
+  chat/email.<br />
+  <a href="https://headspace.org.au/eheadspace/connect-with-a-clinician/"
+    >https://headspace.org.au/eheadspace/connect-with-a-clinician/</a
+  >
+  </p>
+
+  <p>
+  <a href="https://friendline.org.au/">FriendLine</a> for individuals who are
+  feeling lonely or want a chat.<br />
+  Call 1800 424 287 OR chat online
+  <a href="https://friendline.org.au/">https://friendline.org.au/</a>
+  </p>
+
+  <p>
+  <a href="https://www.beyondblue.org.au/">Beyond Blue</a> for individuals who
+  are suffering from
+  <a href="https://www.healthdirect.gov.au/depression">depression</a> and
+  <a href="https://www.healthdirect.gov.au/anxiety">anxiety</a> <br />Call 1300
+  22 4636, 24 hours/7 days a week OR chat online or through email<br />
+  <a href="https://www.beyondblue.org.au/get-support/get-immediate-support"
+    >https://www.beyondblue.org.au/get-support/get-immediate-support</a
+  >
+  </p>
+
+
+allow emailing: False
+include attachment notice: False
+include download tab: False
+manual attachment list: True
+---

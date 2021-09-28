@@ -1,0 +1,28 @@
+mandatory: True
+question: Review your details  
+subquestion: |
+  <! –– This is to ensure that additional fields are not shown on the bottom of table if the submitter details are not rendered -->
+  <div style="display: none">[FIELD submitter.name.first][FIELD submitter.name.last]     </div>
+
+  Questions  | Answers
+  -------|---------
+  % if submitter == "myself":
+  Reporting on your own behalf?  | Yes
+  % endif
+  % if not who_is_submitter == "Myself":
+  Reporting on your own behalf?  | No
+  Submitter's Name  | <div class="review-input">[FIELD submitter.name.first] [FIELD submitter.name.last]</div>
+  Submitter's relation to refused person  | ${who_is_submitter}
+  % endif
+  Refused person's name | <div class="review-input">[FIELD refused_person.name.first] [FIELD refused_person.name.last]</div>
+  Refused person's email | <div class="review-input">[FIELD refused_person.email]</div>
+  Refused person's phone number | <div class="review-input">[FIELD rp_phoneno]</div>
+fields: 
+  - SFNAME: submitter.name.first
+  - SLNAME: submitter.name.last
+  - RFNAME: refused_person.name.first
+  - RLNAME: refused_person.name.last
+  - EMAIL: refused_person.email
+  - PHONE: rp_phoneno
+continue button field: reviewed
+---

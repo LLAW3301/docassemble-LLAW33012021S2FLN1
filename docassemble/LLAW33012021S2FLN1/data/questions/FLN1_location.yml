@@ -1,0 +1,47 @@
+question: "What is the address of the Restaurant?"
+comments : |
+subquestion: |
+  <div class="font-weight-bold">Address</div>
+  <div id="addr-input-container" class="addr-input">[FIELD eatery_Address]</div>
+  
+  <div class="font-weight-bold">Postcode (enter a postcode, or search by suburb)</div>
+  <div id="postcode-search-container">[FIELD eatery_Postcode]</div>
+  
+  <div id="postcode-result-container"></div>
+  <p>If you were unsure on the address, please use the map below for assistance</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d418336.00724490406!2d138.33097717226232!3d-35.00044507234369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab735c7c526b33f%3A0x4033654628ec640!2sAdelaide%20SA!5e0!3m2!1sen!2sau!4v1631181766729!5m2!1sen!2sau" width="100%" height="450" style="border:0;" allowfullscreen="False" loading="lazy"></iframe>
+fields: 
+  - Address: eatery_Address
+  - Postcode: eatery_Postcode
+script: |
+  <script>
+    const maxResults = 10;
+    const postcodeInputContainer = document.getElementById('postcode-search-container');
+    const postcodeInput = postcodeInputContainer.getElementsByClassName('dainput-embedded')[0];
+    const postcodeResultContainer = document.getElementById('postcode-result-container');
+    
+    postcodeInput.addEventListener('input', updatePostcodes);
+    
+    function updatePostcodes(e) {
+      const searchQuery = e.target.value.replace(/\W/g, '');
+      if (searchQuery.length == 0) return postcodeResultContainer.innerHTML = '';
+      const searchRegex = new RegExp(searchQuery, 'i');
+      
+      let results = [];
+      
+      for(var element in postcodesDB.elements){
+        var entry = postcodesDB.elements[element];
+        const entrySearchText = (entry.postcode + entry.placename).replace(/\W/g, '');
+        if (searchRegex.test(entrySearchText)) results.push(entry);
+        if (results.length >= maxResults)break;
+      }
+      
+      postcodeResultContainer.innerHTML = results.map(result => '<div class="postcode-item" onclick="selectPostcode(' + result.postcode + ')">' + result.postcode + ': ' + result.placename + '</div>').join('');
+    }
+    
+    function selectPostcode(postcode) {
+      postcodeInput.value = postcode;
+      postcodeResultContainer.innerHTML = '';
+    }
+  </script>  
+---

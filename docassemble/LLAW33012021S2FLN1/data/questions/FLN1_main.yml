@@ -30,8 +30,6 @@ mandatory: True
 code: |
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
-  track_location = submitter.location.status()
-  
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 

@@ -11,7 +11,7 @@ subquestion: |
   % endif
   % if not who_is_submitter == "Myself":
   Reporting on your own behalf?  | No
-  Submitter's Name  | <div class="review-input">[FIELD submitter.name.first] [FIELD submitter.name.last]</div>
+  Submitter's Name  | ${submitter.name.first} ${submitter.name.last}
   Submitter's relation to refused person  | ${who_is_submitter}
   % endif
   Refused person's name | <div class="review-input">[FIELD refused_person.name.first] [FIELD refused_person.name.last]</div>

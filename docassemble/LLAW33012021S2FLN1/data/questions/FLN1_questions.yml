@@ -10,6 +10,25 @@ include:
 objects from file:
   - postcodes: postcodes.json
 ---
+attachment:
+  name: report
+  filename: food-refusal-report-${todays_date}
+  docx template file: Jinja.docx
+  variable name: report
+  valid formats:
+    - pdf
+---
+template: email_template
+subject: |
+  Food Refusal Report | Paws Rights
+content: |
+  Greetings, ${refused_person.name.first}
+
+  Your food refusal report is attached.
+
+  Thank you,
+  The Paws Rights Team
+---
 question: Who is submitting the report?
 field: who_is_submitter
 buttons:
@@ -78,24 +97,4 @@ fields:
   - Attachments: attached_evidence
     datatype: files
     accept: |
-      "image/jpeg, image/png"
----
-
-attachment:
-  name: report
-  filename: food-refusal-report-${todays_date}
-  docx template file: Jinja.docx
-  variable name: report
-  valid formats:
-    - pdf
----
-template: email_template
-subject: |
-  Food Refusal Report | Paws Rights
-content: |
-  Greetings, ${refused_person.name.first}
-
-  Your food refusal report is attached.
-
-  Thank you,
-  The Paws Rights Team
+      "image/jpeg"

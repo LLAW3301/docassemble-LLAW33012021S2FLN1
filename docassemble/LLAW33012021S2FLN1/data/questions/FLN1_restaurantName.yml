@@ -28,6 +28,7 @@ script: |
   node.style.display = "none";
   var hidden = true;
   
+  // Function to toggle the help to show/hide additional info
   function toggleHelp() {
     if(hidden){
       node.style.display = "block";

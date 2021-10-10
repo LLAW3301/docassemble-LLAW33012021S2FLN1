@@ -30,6 +30,7 @@ mandatory: True
 code: |
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
+  # sets up sender details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 
@@ -39,18 +40,20 @@ code: |
   todays_date = str(date.today())
   current_time = now.strftime("%H:%M:%S")
   
+  
   if(who_is_submitter == "Myself"):
     selfsubmitted = True
     phonenumberquestion = "What is your phone number?"
     emailquestion = "What is your email address?"
-    pronoun = "you"
-    refused_person.name.first = submitter.name.first
+    pronoun = "you" # Defines which pronoun to use in questions
+    # If report is self submitted, the submitters name is equal to the refused persons name
+    refused_person.name.first = submitter.name.first 
     refused_person.name.last = submitter.name.last
   else:
     selfsubmitted = False
     phonenumberquestion = "What is the phone number of the refused person?"
     emailquestion = "What is the email address of the refused person?"
-    pronoun = "they"
+    pronoun = "they" # Defines which pronoun to use in questions
     submitter.name.first
     submitter.name.last
     refused_person.name.first
@@ -75,7 +78,10 @@ code: |
   else:
     attached_evidence = []
     
-  reviewed
+      
+  reviewed # this prompts the review page to open
+  
+  # email is sent once details have been reviewed
   send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])
 ---
 include:

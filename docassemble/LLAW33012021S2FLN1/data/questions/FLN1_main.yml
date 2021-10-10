@@ -23,7 +23,7 @@ subquestion: |
   **Furthermore, the user must consent to the collection of their data.**
 buttons:
   - I agree and wish to continue: continue
-  - No I do not agree and with to exit: exit
+  - No I do not agree and wish to exit: exit
 ---
 
 mandatory: True

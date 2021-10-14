@@ -17,6 +17,9 @@ subquestion: |
   Refused person's name | <div class="review-input">[FIELD refused_person.name.first] [FIELD refused_person.name.last]</div>
   Refused person's email | <div class="review-input">[FIELD refused_person.email]</div>
   Refused person's phone number | <div class="review-input">[FIELD rp_phoneno]</div>
+   % if attached_evidence:
+  Attachments | ${ attached_evidence }
+  % endif
 fields: 
   - SFNAME: submitter.name.first
   - SLNAME: submitter.name.last

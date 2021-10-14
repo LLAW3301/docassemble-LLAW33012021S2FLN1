@@ -1,6 +1,6 @@
-# docassemble.LLAW33012021S2FLN1
+# FLN1 : Entry to premises 
 
-A docassemble extension.
+The FLN1 application aids users with disabilities to report instances of refusal-for entry into restaurants. This application was created as there is a significant need for a mechanism that allows those with assistance animals to file acts of discrimination when refused entry into hospitality settings. Each user receives a generated PDF that is sent via email that allows the collation of data to raise awareness on the issue.
 
 ## Authors
 

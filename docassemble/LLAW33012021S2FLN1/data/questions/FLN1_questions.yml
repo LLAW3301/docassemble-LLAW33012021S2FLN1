@@ -42,21 +42,31 @@ buttons:
 question: Please enter the full name of the person who has been refused entry?
 fields:
   - First Name: refused_person.name.first
+    default: Robert
   - Last Name: refused_person.name.last
+    default: Piovesan
 ---
 question: What is your full name?
 fields:
   - First Name: submitter.name.first
+    default: James
   - Last Name: submitter.name.last
+    default: Smith
 ---
 question: ${phonenumberquestion}
 fields:
   - Phone Number: rp_phoneno
+    default: 0491 577 644
+    datatype: raw
+comment: |
+  0491 576 398 is a fake phone number from:
+  https://www.acma.gov.au/choose-your-phone-number#use-phone-numbers-for-fiction
 ---
 question: ${emailquestion}
 fields:
   - Email: refused_person.email
     datatype: email
+    default: piov0007@flinders.edu.au
 ---
 question: "Did the staff state their reason for the refusal?"
 yesno: staffHasReason
@@ -65,6 +75,8 @@ question: "What was said by the staff during the refusal?"
 fields:
   - Details: staffReason
     input type: area
+    default: |
+      No dogs are allowed due to allergies
 ---
 question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
 yesno: staffRequestedPaperwork
@@ -92,7 +104,9 @@ question: Do you have any supporting evidence you want to attach?
 yesno: supporting_evidence
 ---
 question: |
-  Please add any files e.g. screenshots, photos, your documentation.
+  Please attach any supporting files e.g. screenshots, photos, your documentation.
+subquestion: |
+  <i>accepted file type: <b>jpeg</b></i>
 fields:
   - Attachments: attached_evidence
     datatype: files

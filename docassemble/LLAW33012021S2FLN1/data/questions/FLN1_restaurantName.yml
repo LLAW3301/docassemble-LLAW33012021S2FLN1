@@ -10,17 +10,20 @@ subquestion: |
   
   
   <div id="help-shown" class="bs-callout bs-callout-info" style="display: none"><p>
-  <i>"food business"</i> means a business, enterprise or activity (other than a business, enterprise or activity that is <a href="http://www8.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/consol_act/fa200157/s7.html#primary_food_production">primary food production</a>) that involes-<br/>
-      <span class="tab"></span>(a) the <a href="http://www8.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/consol_act/fa200157/s4.html#handling">handling</a> of <a href="http://www8.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/consol_act/fa200157/s5.html#food">food</a> intended for sale; or<br/>
-      <span class="tab"></span>(b) the sale of <a href="http://www8.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/consol_act/fa200157/s5.html#food">food</a>
+  <a href="http://www5.austlii.edu.au/au/legis/cth/consol_act/dda1992264/s4.html">Premises</a> includes: <br/>
+      <span class="tab"></span>(a) a structure, building, aircraft, vehicle or vessel; and<br/>
+      <span class="tab"></span>(b) a place (whether enclosed or built on or not); and
+      <br/>
+      <span class="tab"></span>(c) a part of premises (including premises of a kind referred to in paragraph (a) or (b)).Disability Discrimination Act 1992 (Cth) s 4
       <br/><br/>
-      <a href="http://www8.austlii.edu.au/cgi-bin/viewdoc/au/legis/sa/consol_act/fa200157/s6.html#food_business">For further information click here</a>
+      <a href="http://www5.austlii.edu.au/au/legis/cth/consol_act/dda1992264/s4.html">For further information click here</a>
   
   </p>
   </div>
   <br/>
 fields: 
   - Restaurant Name: eatery_StoreName
+    default: Example Cafe
 script: |
   <script>
   var node = document.getElementById("help-shown");

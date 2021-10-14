@@ -5,6 +5,40 @@ objects:
   - refused_person: Individual
   - submitter: Individual
   - sender: Individual
+  - pawrights_logo: DAStaticFile.using(filename='paws_rights_logo_transparent.png')
+---
+initial: true
+code: |
+  # Sets the logo in the header
+  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" style="height: 40px; width: 40px;">')
+---
+features:
+  css: FLN1_main.css
+  debug: False
+  hide standard menu: True
+---
+default screen parts:
+  post: |
+    <div style="display: flex; height: 200px; align-items: flex-end; flex-direction: row-reverse">
+    <div style="margin: 5px"><img src="https://staff.flinders.edu.au/etc.clientlibs/flinders/clientlibs/clientlib-site/resources/images/flinderuni_main_logo_black.png" height="40">
+    </div>
+    <div style="margin: 5px; text-align: right">
+    <cite><small><i>
+    Developed by Flinders University in collaboration with Amanda Muller and Ellen Fraser-Barbour
+    </i></small></cite>
+    </div>
+    </div>
+---
+metadata:
+  title: |
+    Paws Rights
+  description: |
+    A way to report a restaurant refusal in South Australia
+  authors:
+    - name: Robert Piovesan, Annalese Alvarez, Accacia Verco, Chris Power, Khevalin Parekh and Matthew Donnellan
+      organization: Flinders University
+  revision_date: 2021-10-14
+  exit url: https://www.flinders.edu.au/
 ---
 mandatory: True
 event: welcome_screen
@@ -25,7 +59,6 @@ buttons:
   - I agree and wish to continue: continue
   - No I do not agree and wish to exit: exit
 ---
-
 mandatory: True
 code: |
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")

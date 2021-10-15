@@ -105,13 +105,12 @@ code: |
   if(staffRequestedPaperwork):
     IDWasShown
   else:
-    IDWasShown = "N/A"
+    IDWasShown = False
   if(supporting_evidence):
     attached_evidence
   else:
-    attached_evidence = []
-    
-      
+    attached_evidence = [] 
+        
   reviewed # this prompts the review page to open
   
   # email is sent once details have been reviewed

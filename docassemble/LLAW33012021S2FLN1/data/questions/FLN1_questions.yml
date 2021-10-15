@@ -69,20 +69,26 @@ fields:
     default: piov0007@flinders.edu.au
 ---
 question: "Did the staff state their reason for the refusal?"
-yesno: staffHasReason
----
-question: "What was said by the staff during the refusal?"
 fields:
-  - Details: staffReason
+  - "Yes/No" : staffHasReason
+    datatype: yesnoradio
+  - "What was said by the staff during the refusal?" : staffReason
     input type: area
     default: |
       No dogs are allowed due to allergies
+    show if:
+      variable: staffHasReason
+      is: True
 ---
 question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
-yesno: staffRequestedPaperwork
----
-question: "Was ID provided?"
-yesno: IDWasShown
+fields:
+  - "Yes/No" : staffRequestedPaperwork
+    datatype: yesnoradio
+  - "Was ID provided?" : IDWasShown
+    datatype: yesnoradio
+    show if:
+      variable: staffRequestedPaperwork
+      is: True
 ---
 question: "When did the incident occur?"
 subquestion: "This defaults to today’s date, but you can edit it if needed"

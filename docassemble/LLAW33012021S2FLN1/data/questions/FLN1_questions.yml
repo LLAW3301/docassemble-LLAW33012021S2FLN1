@@ -2,12 +2,12 @@ features:
   css: question.css
 ---
 images:
-  self: self_g.png
-  partner: partner_g.png
-  friend: friend_g.png
-  carer: carer_g.png
-  relative: relative_g.png
-  other: other_g.png
+  self: self_w.png
+  partner: partner_w.png
+  friend: friend_w.png
+  carer: carer_w.png
+  relative: relative_w.png
+  other: other_w.png
 ---
 include:
   - FLN1_location.yml

@@ -96,8 +96,8 @@ subquestion: |
   </div>
 
   <div class="d-none">
-  <!-- Include any possibly-excluded fields here, but only when they're
-       excluded. This is to avoid having them display in the normal fields list.
+  <!-- Include any possibly-excluded fields here.
+       This is to avoid having them display in the normal fields list.
        Note "d-none" is a built-in bootstrap class that
        hides this section -->
   [FIELD s_lname]
@@ -131,6 +131,10 @@ fields:
 continue button field: reviewed
 script: |
   <script>
+    // This is a workaround for a strange docassemble issue where the time
+    // field appears blank if it has already been set. As a workaround, a
+    // copy variable is created which allows the date to be set from the review screen
+  
     var saved_refusal_time = val("inc_time_dateobj");
     if (saved_refusal_time !== "") {
       setField("inc_time", saved_refusal_time);

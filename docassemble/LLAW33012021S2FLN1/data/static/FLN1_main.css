@@ -79,7 +79,7 @@
   padding: 0.375em 0.75em 0.375em 0.75em;
 }
 
-
+/* Styling for the drop down on the review page */
 a span.pdcaretopen {
     display: inline;
 }
@@ -94,4 +94,14 @@ a.collapsed .pdcaretopen {
 
 a.collapsed .pdcaretclosed {
     display: inline;
+}
+
+/* Setting the image background color */
+.btn-da-custom {
+    background-color: rgba(0, 47, 96) !important;
+    color: white !important;
+}
+
+.btn-da-custom:hover {
+    background-color: #001429 !important;
 }

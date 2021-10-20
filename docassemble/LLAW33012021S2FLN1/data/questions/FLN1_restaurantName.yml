@@ -1,5 +1,5 @@
 question: |
-  What was the name of the Restaurant which ${pronoun} were refused entry from?
+  What was the name of the food or drink premises which ${pronoun} were refused entry from?
 subquestion: |
 
   <div>Restaurant Name</div>

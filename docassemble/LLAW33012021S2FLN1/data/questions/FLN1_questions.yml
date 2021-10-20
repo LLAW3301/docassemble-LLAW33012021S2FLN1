@@ -1,9 +1,16 @@
 features:
   css: question.css
 ---
+images:
+  self: self_g.png
+  partner: partner_g.png
+  friend: friend_g.png
+  carer: carer_g.png
+  relative: relative_g.png
+  other: other_g.png
+---
 include:
   - FLN1_location.yml
-  - FLN1_review.yml
   - FLN1_restaurantName.yml
   - FLN1_finalScreen.yml
 ---
@@ -33,13 +40,19 @@ question: Who is submitting the report?
 field: who_is_submitter
 buttons:
   - Myself: Myself
+    image: self
   - Partner: Partner
+    image: partner
   - Friend: Friend
+    image: friend
   - Carer: Carer
+    image: carer
   - Relative: Relative
+    image: relative
   - Other: Other
+    image: other
 ---
-question: Please enter the full name of the person who has been refused entry?
+question: ${rp_namequestion}
 fields:
   - First Name: refused_person.name.first
     default: Robert
@@ -110,7 +123,7 @@ question: Do you have any supporting evidence you want to attach?
 yesno: supporting_evidence
 ---
 question: |
-  Please attach any supporting files e.g. screenshots, photos, your documentation.
+  Please attach any supporting files e.g. screenshots or photos
 subquestion: |
   <i>accepted file type: <b>jpeg</b></i>
 fields:
@@ -118,3 +131,6 @@ fields:
     datatype: files
     accept: |
       "image/jpeg"
+---
+include:
+  - FLN1_review.yml

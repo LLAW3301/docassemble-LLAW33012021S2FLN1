@@ -1,4 +1,6 @@
-mandatory: True
+mandatory: False
+only sets:
+  - reviewed
 question: Review your details  
 subquestion: |
   <! –– This is to ensure that additional fields are not shown on the bottom of table if the submitter details are not rendered -->
@@ -11,7 +13,7 @@ subquestion: |
   % endif
   % if not who_is_submitter == "Myself":
   Reporting on your own behalf?  | No
-  Submitter's Name  | ${submitter.name.first} ${submitter.name.last}
+  Submitter's Name  | <div class="review-input">[FIELD s_fname] [FIELD s_lname]</div>
   Submitter's relation to refused person  | ${who_is_submitter}
   % endif
   Refused person's name | <div class="review-input">[FIELD refused_person.name.first] [FIELD refused_person.name.last]</div>
@@ -20,12 +22,123 @@ subquestion: |
    % if attached_evidence:
   Attachments | ${ attached_evidence }
   % endif
+  
+  And optionally check that the rest of the incident information is correct:
+  
+  <a class="collapsed" data-toggle="collapse" href="#incident-info" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="pdcaretopen">
+      <i class="fas fa-caret-down"></i>
+    </span>
+    <span class="pdcaretclosed">
+      <i class="fas fa-caret-right"></i>
+    </span>
+    Further incident information
+  </a>
+    <div class="collapse" id="incident-info">
+      <div class="card card-body bg-light pb-1">
+        <div class="table-responsive">
+          <table class="table table-striped review-table table-bordered">
+            <thead>
+              <tr>
+                <th>Questions</th>
+                <th>Answers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Food or drink premises name</td>
+                <td>
+                  <div class="review-input">[FIELD eatery_StoreName]</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Premises address</td>
+                <td>
+                  <div class="review-input">[FIELD eatery_Address]</div> <div class="review-input">[FIELD eatery_Postcode]</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Refusal date</td>
+                <td>
+                  <div class="review-input">[FIELD inc_date]</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Refusal time</td>
+                <td>
+                  <div class="review-input">[FIELD inc_time]</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Staff stated the reason for refusal</td>
+                <td>${staffHasReason}</td>
+              </tr>
+              % if staffHasReason:
+              <tr>
+                <td>Refusal reason</td>
+                <td>[FIELD staffReason]</td>
+              </tr>
+              % endif
+              <tr>
+                <td>Staff requested animal ID</td>
+                <td>${staffRequestedPaperwork}</td>
+              </tr>
+              % if staffRequestedPaperwork:
+              <tr>
+                <td>ID was provided</td>
+                <td>${IDWasShown}</td>
+              </tr>
+              % endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+
+  <div class="d-none">
+  <!-- Include any possibly-excluded fields here, but only when they're
+       excluded. This is to avoid having them display in the normal fields list.
+       Note "d-none" is a built-in bootstrap class that
+       hides this section -->
+  [FIELD s_lname]
+  [FIELD s_fname]
+  <!-- This one we always want hidden -->
+  [FIELD inc_time_dateobj]
+  </div>
+    
 fields: 
-  - SFNAME: submitter.name.first
-  - SLNAME: submitter.name.last
+  - SFNAME: s_fname
+    default : ${submitter.name.first}
+  - SLNAME: s_lname
+    default : ${submitter.name.last}
   - RFNAME: refused_person.name.first
   - RLNAME: refused_person.name.last
   - EMAIL: refused_person.email
+    datatype: email
   - PHONE: rp_phoneno
+  - EATERY_NAME: eatery_StoreName
+  - EATERY ADDRESS: eatery_Address
+  - EATERY POSTCODE: eatery_Postcode
+  - INC DATE: inc_date
+    datatype: date
+  - INC TIME: inc_time
+    datatype: time
+  - INC TIME HIDDEN: inc_time_dateobj
+    datatype: time
+    required: False
+  - STAFF REASON: staffReason
+    input type: area
 continue button field: reviewed
+script: |
+  <script>
+    var saved_refusal_time = val("inc_time_dateobj");
+    if (saved_refusal_time !== "") {
+      setField("inc_time", saved_refusal_time);
+    } else {
+      setField(
+        "FLNrefusal_time",
+        ${ json.dumps(current_datetime().strftime('%H:%M:00')) }
+      );
+    }
+  </script>
 ---

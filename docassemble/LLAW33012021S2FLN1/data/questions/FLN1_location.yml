@@ -1,4 +1,4 @@
-question: "What is the address of the Restaurant?"
+question: "What is the address of the food or drink premises?"
 comments : |
 subquestion: |
   <div class="font-weight-bold">Address</div>

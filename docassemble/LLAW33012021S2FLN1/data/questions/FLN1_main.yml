@@ -58,32 +58,39 @@ subquestion: |
 buttons:
   - I agree and wish to continue: continue
   - No I do not agree and wish to exit: exit
+    url: https://humanrights.gov.au/complaints/complaint-guides/complaints-under-disability-discrimination-act?fbclid=IwAR1DLEd5tz0lo1F-iN_tEa8ULWEFETCPWpHd1uzegIxY8X-bFD2HYIknGkg
 ---
 mandatory: True
 code: |
+  # Creating object in javascript from postcodes json file
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
   # sets up sender details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 
+  #Getting current time so that the incident time can default to this
   from datetime import date
   from datetime import datetime
   now = datetime.now()
   todays_date = str(date.today())
   current_time = now.strftime("%H:%M:%S")
   
-  
+  # Defining the general flow of the application
   if(who_is_submitter == "Myself"):
     selfsubmitted = True
+    rp_namequestion = "What is your full name?"
     phonenumberquestion = "What is your phone number?"
     emailquestion = "What is your email address?"
     pronoun = "you" # Defines which pronoun to use in questions
     # If report is self submitted, the submitters name is equal to the refused persons name
-    refused_person.name.first = submitter.name.first 
-    refused_person.name.last = submitter.name.last
+    refused_person.name.first
+    refused_person.name.last
+    submitter.name.first = refused_person.name.first
+    submitter.name.last = refused_person.name.last
   else:
     selfsubmitted = False
+    rp_namequestion = "Please enter the full name of the person who has been refused entry?"
     phonenumberquestion = "What is the phone number of the refused person?"
     emailquestion = "What is the email address of the refused person?"
     pronoun = "they" # Defines which pronoun to use in questions
@@ -98,10 +105,11 @@ code: |
   eatery_Address # Same question as other address details
   inc_date
   inc_time
+  inc_time_dateobj = inc_time.strftime("%H:%M:%S")
   if(staffHasReason):
    staffReason
   else:
-    staffReason = "N/A"
+    staffReason = " "
   if(staffRequestedPaperwork):
     IDWasShown
   else:
@@ -110,8 +118,10 @@ code: |
     attached_evidence
   else:
     attached_evidence = [] 
-        
+  
   reviewed # this prompts the review page to open
+  
+  rp_name = refused_person.name.first + " " + refused_person.name.last
   
   # email is sent once details have been reviewed
   send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])

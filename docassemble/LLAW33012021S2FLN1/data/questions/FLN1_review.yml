@@ -102,7 +102,7 @@ subquestion: |
        hides this section -->
   [FIELD s_lname]
   [FIELD s_fname]
-  <!-- This one we always want hidden -->
+  [FIELD staffReason]
   [FIELD inc_time_dateobj]
   </div>
     

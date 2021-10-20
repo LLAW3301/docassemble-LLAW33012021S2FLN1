@@ -1,5 +1,5 @@
 question: |
-  What was the name of the food or drink premises which ${pronoun} were refused entry from?
+  What was the name of the food or drink Premises which ${pronoun} were refused entry from?
 subquestion: |
 
   <div>Restaurant Name</div>
@@ -16,6 +16,8 @@ subquestion: |
       <br/>
       <span class="tab"></span>(c) a part of premises (including premises of a kind referred to in paragraph (a) or (b)).Disability Discrimination Act 1992 (Cth) s 4
       <br/><br/>
+      This may include restaurants, cafes, food trucks, etc.
+      <br/>
       <a href="http://www5.austlii.edu.au/au/legis/cth/consol_act/dda1992264/s4.html">For further information click here</a>
   
   </p>

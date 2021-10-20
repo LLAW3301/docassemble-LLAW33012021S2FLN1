@@ -119,6 +119,7 @@ fields:
   - EATERY_NAME: eatery_StoreName
   - EATERY ADDRESS: eatery_Address
   - EATERY POSTCODE: eatery_Postcode
+    datatype: integer
   - INC DATE: inc_date
     datatype: date
   - INC TIME: inc_time

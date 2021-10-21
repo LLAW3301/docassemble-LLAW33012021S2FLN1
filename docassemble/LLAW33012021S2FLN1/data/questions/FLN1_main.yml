@@ -62,10 +62,10 @@ buttons:
 ---
 mandatory: True
 code: |
-  # Creating object in javascript from postcodes json file
+  # Creating object in the javascript console from the postcodes json file
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
-  # sets up sender details for final email
+  # sets up sender object details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 
@@ -83,7 +83,6 @@ code: |
     phonenumberquestion = "What is your phone number?"
     emailquestion = "What is your email address?"
     pronoun = "you" # Defines which pronoun to use in questions
-    # If report is self submitted, the submitters name is equal to the refused persons name
     refused_person.name.first
     refused_person.name.last
     # if the application is self submitted, then the submitter is the refused person

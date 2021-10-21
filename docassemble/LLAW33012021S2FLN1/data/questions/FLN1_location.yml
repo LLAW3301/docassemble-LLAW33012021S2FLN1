@@ -16,13 +16,19 @@ fields:
   - Postcode: eatery_Postcode
 script: |
   <script>
+    // Defines how many results are shown
     const maxResults = 10;
+    
+    // Getting the DOM elements
     const postcodeInputContainer = document.getElementById('postcode-search-container');
     const postcodeInput = postcodeInputContainer.getElementsByClassName('dainput-embedded')[0];
     const postcodeResultContainer = document.getElementById('postcode-result-container');
     
+    //adding the function to the input field as an event listener
     postcodeInput.addEventListener('input', updatePostcodes);
     
+    // function to query the postcodes json file and
+    // match with the users input using regex
     function updatePostcodes(e) {
       const searchQuery = e.target.value.replace(/\W/g, '');
       if (searchQuery.length == 0) return postcodeResultContainer.innerHTML = '';
@@ -40,6 +46,7 @@ script: |
       postcodeResultContainer.innerHTML = results.map(result => '<div class="postcode-item" onclick="selectPostcode(' + result.postcode + ')">' + result.postcode + ': ' + result.placename + '</div>').join('');
     }
     
+    // function to select the postcode and clear the search results
     function selectPostcode(postcode) {
       postcodeInput.value = postcode;
       postcodeResultContainer.innerHTML = '';

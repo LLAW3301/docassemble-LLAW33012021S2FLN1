@@ -10,7 +10,7 @@ objects:
 initial: true
 code: |
   # Sets the logo in the header
-  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" alt="Paw Rights Logo" style="height: 40px; width: 40px;">')
+  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" alt="Paw Rights Logo" style="height: 60px; width: 60px;">')
 ---
 features:
   css: FLN1_main.css
@@ -33,7 +33,7 @@ metadata:
   title: |
     Paws Rights
   description: |
-    A way to report a restaurant refusal in South Australia
+    A way to report a food or drink venue refusal in South Australia
   authors:
     - name: Robert Piovesan, Annalese Alvarez, Accacia Verco, Chris Power, Khevalin Parekh and Matthew Donnellan
       organization: Flinders University
@@ -62,10 +62,10 @@ buttons:
 ---
 mandatory: True
 code: |
-  # Creating object in javascript from postcodes json file
+  # Creating object in the javascript console from the postcodes json file
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
-  # sets up sender details for final email
+  # sets up sender object details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 
@@ -83,7 +83,6 @@ code: |
     phonenumberquestion = "What is your phone number?"
     emailquestion = "What is your email address?"
     pronoun = "you" # Defines which pronoun to use in questions
-    # If report is self submitted, the submitters name is equal to the refused persons name
     refused_person.name.first
     refused_person.name.last
     # if the application is self submitted, then the submitter is the refused person

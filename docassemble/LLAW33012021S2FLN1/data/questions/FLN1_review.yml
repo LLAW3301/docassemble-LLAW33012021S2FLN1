@@ -141,7 +141,7 @@ script: |
       setField("inc_time", saved_refusal_time);
     } else {
       setField(
-        "FLNrefusal_time",
+        "inc_time",
         ${ json.dumps(current_datetime().strftime('%H:%M:00')) }
       );
     }

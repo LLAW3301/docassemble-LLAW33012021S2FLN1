@@ -14,6 +14,7 @@ fields:
   - Address: eatery_Address
     default: 1 Example Street
   - Postcode: eatery_Postcode
+    default: 5000
 script: |
   <script>
     // Defines how many results are shown

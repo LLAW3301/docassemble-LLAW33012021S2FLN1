@@ -26,6 +26,7 @@
 }
 .navbar-brand {
   line-height: 1em;
+  padding: 0em !important
 }
 
 /* style the back button */

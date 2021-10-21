@@ -10,7 +10,7 @@ objects:
 initial: true
 code: |
   # Sets the logo in the header
-  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" alt="Paw Rights Logo" style="height: 40px; width: 40px;">')
+  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" alt="Paw Rights Logo" style="height: 60px; width: 60px;">')
 ---
 features:
   css: FLN1_main.css
@@ -33,7 +33,7 @@ metadata:
   title: |
     Paws Rights
   description: |
-    A way to report a restaurant refusal in South Australia
+    A way to report a food or drink venue refusal in South Australia
   authors:
     - name: Robert Piovesan, Annalese Alvarez, Accacia Verco, Chris Power, Khevalin Parekh and Matthew Donnellan
       organization: Flinders University

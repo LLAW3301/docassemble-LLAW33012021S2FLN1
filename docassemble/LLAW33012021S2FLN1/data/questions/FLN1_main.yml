@@ -74,7 +74,7 @@ code: |
   from datetime import datetime
   now = datetime.now()
   todays_date = str(date.today())
-  current_time = now.strftime("%H:%M:%S")
+  current_time = now.strftime("%H:%M")
   
   # Defining the general flow of the application
   if(who_is_submitter == "Myself"):

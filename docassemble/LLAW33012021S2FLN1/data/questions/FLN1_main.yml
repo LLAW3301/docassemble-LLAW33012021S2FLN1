@@ -105,7 +105,7 @@ code: |
   eatery_Address # Same question as other address details
   inc_date
   inc_time
-  inc_time_dateobj = inc_time.strftime("%H:%M:%S")
+  inc_time_dateobj = inc_time.strftime("%H:%M")
   if(staffHasReason):
    staffReason
   else:

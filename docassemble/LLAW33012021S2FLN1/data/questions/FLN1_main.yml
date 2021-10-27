@@ -3,6 +3,7 @@ objects from file:
 ---
 objects:
   - refused_person: Individual
+  - data_collection: Individual
   - submitter: Individual
   - sender: Individual
   - pawrights_logo: DAStaticFile.using(filename='paws_rights_logo_transparent.png')
@@ -46,7 +47,7 @@ question: "Paws Rights: Entry to Premises"
 subquestion: |
   Welcome to our app.
   
-  <p><b>'Paw Rights: Entry to Premises'</b> has been designed to create the process of reporting assistance animal refusal for entries, fast and efficient.
+  <p><b>Paw Rights: Entry to Premises</b> has been designed to make reporting assistance animal food/drink venue refusals fast and efficient.
   <br/>
   <br/>
   </p>
@@ -68,6 +69,9 @@ code: |
   # sets up sender object details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
+  
+  # To activate data collection set up email for data collection below
+  data_collection = ""
 
   # Getting current time so that the incident time can default to this
   from datetime import date
@@ -125,7 +129,10 @@ code: |
   rp_name = refused_person.name.first + " " + refused_person.name.last
   
   # email is sent once details have been reviewed
-  send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])
+  report_email_sent = send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])
+  
+  # If data collection is to be turned on, then uncomment the line below
+  #data_email_sent = send_email(to=data_collection, sender=sender, template=data_email_template)
 ---
 include:
   - FLN1_questions.yml

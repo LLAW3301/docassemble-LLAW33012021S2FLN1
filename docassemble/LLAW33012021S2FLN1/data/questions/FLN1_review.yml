@@ -70,8 +70,15 @@ subquestion: |
                 </td>
               </tr>
               <tr>
-                <td>Staff stated the reason for refusal</td>
-                <td>${staffHasReason}</td>
+                <td>Did the Staff state the reason for refusal?</td>
+                <td>
+                % if staffHasReason:
+                  Yes
+                % endif
+                % if not staffHasReason:
+                  No
+                % endif
+                </td>
               </tr>
               % if staffHasReason:
               <tr>
@@ -80,13 +87,27 @@ subquestion: |
               </tr>
               % endif
               <tr>
-                <td>Staff requested animal ID</td>
-                <td>${staffRequestedPaperwork}</td>
+                <td>Did staff requested animal ID?</td>
+                <td>
+                % if staffRequestedPaperwork:
+                  Yes
+                % endif
+                % if not staffRequestedPaperwork:
+                  No
+                % endif
+                </td>
               </tr>
               % if staffRequestedPaperwork:
               <tr>
-                <td>ID was provided</td>
-                <td>${IDWasShown}</td>
+                <td>Was ID was provided?</td>
+                <td>
+                % if IDWasShown:
+                  Yes
+                % endif
+                % if not IDWasShown:
+                  No
+                % endif
+                </td>
               </tr>
               % endif
             </tbody>

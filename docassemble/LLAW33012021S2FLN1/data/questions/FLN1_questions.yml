@@ -36,6 +36,55 @@ content: |
   Thank you,
   The Paws Rights Team
 ---
+template: data_email_template
+subject: |
+  Food Refusal Report | Data Collection
+content: |
+   <table>
+    <tbody>
+      <tr>
+        <td>RefusalDate</td>
+        <td>${ inc_date }</td>
+      </tr>
+      <tr>
+        <td>RefusalTime</td>
+        <td>${ inc_time }</td>
+      </tr>
+      <tr>
+        <td>RefusalPostcode</td>
+        <td>${ eatery_Postcode } </td>
+      </tr>
+      <tr>
+        <td>RefusalAddress</td>
+        <td>${ eatery_Address }</td>
+      </tr>
+      <tr>
+        <td>PersonReporting</td>
+        <td>${ who_is_submitter }</td>
+      </tr>
+      <tr>
+        <td>DidRefuserStateReason</td>
+        <td>${ staffHasReason }</td>
+      </tr>
+      <tr>
+        <td>StaffReason</td>
+        <td>${ staffReason  }</td>
+      </tr>
+      <tr>
+        <td>DidRefuserAskForAnimalID</td>
+        <td>${ staffRequestedPaperwork }</td>
+      </tr>
+      <tr>
+        <td>DidUserShowID</td>
+        <td>${ IDWasShown }</td>
+      </tr>
+      <tr>
+        <td>DidUserAttachEvidence</td>
+        <td>${ supporting_evidence }</td>
+      </tr>
+    </tbody>
+    </table>
+---
 question: Who is submitting the report?
 field: who_is_submitter
 buttons:

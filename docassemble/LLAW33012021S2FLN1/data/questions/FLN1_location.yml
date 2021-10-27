@@ -15,6 +15,7 @@ fields:
     default: 1 Example Street
   - Postcode: eatery_Postcode
     default: 5000
+    datatype: raw
 script: |
   <script>
     // Defines how many results are shown

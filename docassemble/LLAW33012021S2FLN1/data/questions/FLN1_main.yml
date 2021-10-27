@@ -71,7 +71,7 @@ code: |
   sender.email = "docassemble-no-reply@flinders.edu.au"
   
   # To activate data collection set up email for data collection below
-  data_collection = ""
+  #data_collection.email = ""
 
   # Getting current time so that the incident time can default to this
   from datetime import date

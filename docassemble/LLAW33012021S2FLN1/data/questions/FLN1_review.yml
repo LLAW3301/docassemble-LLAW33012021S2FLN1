@@ -9,10 +9,10 @@ subquestion: |
   Questions  | Answers
   -------|---------
   % if submitter == "myself":
-  Reporting on your own behalf?  | Yes
+  Recording on your own behalf?  | Yes
   % endif
   % if not who_is_submitter == "Myself":
-  Reporting on your own behalf?  | No
+  Recording on your own behalf?  | No
   Submitter's Name  | <div class="review-input">[FIELD s_fname] [FIELD s_lname]</div>
   Submitter's relation to refused person  | ${who_is_submitter}
   % endif

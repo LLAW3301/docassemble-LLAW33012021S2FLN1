@@ -19,7 +19,7 @@ objects from file:
 ---
 attachment:
   name: report
-  filename: food-refusal-report-${todays_date}
+  filename: food-retail-refusal-record-${todays_date}
   docx template file: Jinja.docx
   variable name: report
   valid formats:
@@ -27,18 +27,41 @@ attachment:
 ---
 template: email_template
 subject: |
-  Food Refusal Report | Paws Rights
+  Food/Retail Refusal Summary | Paws Rights
 content: |
-  Greetings, ${refused_person.name.first}
+  Dear ${refused_person.name.first}
 
-  Your food refusal report is attached.
-
+  Your food/retail refusal summary is attached.
+  
+  **You can use this summary to help you report to your state or territory's anti-discrimination commissioner or to the Australian Human Rights Commission.** Follow the links below to locate your state or territory's anti-discrimination commissioner:
+  
+  [State and Territory Human Rights Commissioners](https://www.ag.gov.au/rights-and-protections/human-rights-and-anti-discrimination/australias-anti-discrimination-law)
+  
+  [Human Rights Australia Complaints](https://humanrights.gov.au/complaints/make-complaint)
+  
+  If you would like to give feedback or participate in further research, please contact amanda.muller@flinders.edu.au.
+  
   Thank you,
+  
   The Paws Rights Team
+
+  [SKIPLINE]
+  [SKIPLINE]
+  [SKIPLINE]
+
+  ***If your experience has been traumatic or mentally distressing to you, please contact mental health services for support:***
+  
+  [Headspace](https://headspace.org.au/eheadspace/) for individuals ages 12-25. Call 1800 650 890, 9am-1am AEST OR Connect 7 days a week through [online
+  chat or email](https://headspace.org.au/eheadspace/connect-with-a-clinician/)
+
+  [FriendLine](https://friendline.org.au/) for individuals who are feeling lonely or want a chat. Call 1800 424 287 OR chat online
+
+  [BeyondBlue](https://www.beyondblue.org.au/) for individuals who
+  are suffering from [depression](https://www.healthdirect.gov.au/depression) and   [anxiety](https://www.healthdirect.gov.au/anxiety). Call 1300 22 4636, 24 hours/7 days a week OR [chat online or through email](https://www.beyondblue.org.au/get-support/get-immediate-support)
 ---
 template: data_email_template
 subject: |
-  Food Refusal Report | Data Collection
+  Food/Retail Refusal Summary | Data Collection
 content: |
    <table>
     <tbody>
@@ -85,7 +108,7 @@ content: |
     </tbody>
     </table>
 ---
-question: Who is submitting the report?
+question: Who is submitting this summary?
 field: who_is_submitter
 buttons:
   - Myself: Myself
@@ -104,31 +127,22 @@ buttons:
 question: ${rp_namequestion}
 fields:
   - First Name: refused_person.name.first
-    default: Robert
   - Last Name: refused_person.name.last
-    default: Piovesan
 ---
 question: What is your full name?
 fields:
   - First Name: submitter.name.first
-    default: James
   - Last Name: submitter.name.last
-    default: Smith
 ---
 question: ${phonenumberquestion}
 fields:
   - Phone Number: rp_phoneno
-    default: 0491 577 644
     datatype: raw
-comment: |
-  0491 576 398 is a fake phone number from:
-  https://www.acma.gov.au/choose-your-phone-number#use-phone-numbers-for-fiction
 ---
 question: ${emailquestion}
 fields:
   - Email: refused_person.email
     datatype: email
-    default: piov0007@flinders.edu.au
 ---
 question: "Did the staff state their reason for the refusal?"
 fields:
@@ -136,8 +150,6 @@ fields:
     datatype: yesnoradio
   - "What was said by the staff during the refusal?" : staffReason
     input type: area
-    default: |
-      No dogs are allowed due to allergies
     show if:
       variable: staffHasReason
       is: True
@@ -168,11 +180,11 @@ fields:
     default: |
       ${ current_time }
 ---
-question: Do you have any supporting evidence you want to attach?
+question: Do you have any supporting screenshots or photos you want to attach?
 yesno: supporting_evidence
 ---
 question: |
-  Please attach any supporting files e.g. screenshots or photos
+  Please attach any supporting screenshots or photos
 subquestion: |
   <i>accepted file type: <b>jpeg</b></i>
 fields:

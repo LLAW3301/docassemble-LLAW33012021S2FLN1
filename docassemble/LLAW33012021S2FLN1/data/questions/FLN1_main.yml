@@ -43,23 +43,24 @@ metadata:
 ---
 mandatory: True
 event: welcome_screen
-question: "Paws Rights: Entry to Premises"
+question: "Paws Rights"
 subquestion: |
-  Welcome to our app.
   
-  <p><b>Paw Rights: Entry to Premises</b> has been designed to make reporting assistance animal food/drink venue refusals fast and efficient.
-  <br/>
-  <br/>
-  </p>
-  <hr/>
-  <br/>
-  **Disclaimer**: This application does not provide legal advice and should not be taken    as such. This should NOT be considered a legal document. If you wish to seek legal advice, please contact an independent body.
+  <b>Paw Rights</b> has been designed to make documenting assistance animal food/retail refusals fast and efficient.
   
-  **Furthermore, the user must consent to the collection of their data.**
+  **Disclaimer: This application does not provide legal advice and should not be taken as such. This should not be considered a legal document.**
+  
+  This application will collect information for research and reporting purposes.
+  
+  By clicking the **Continue** button you agree to the [Consent Form](${url_of('Paws_Rights_Information_Sheet.pdf')}).
 buttons:
-  - I agree and wish to continue: continue
-  - No I do not agree and wish to exit: exit
+  - I agree & wish to continue: continue
+  - I do not agree & wish to exit: exit
     url: https://humanrights.gov.au/complaints/complaint-guides/complaints-under-disability-discrimination-act?fbclid=IwAR1DLEd5tz0lo1F-iN_tEa8ULWEFETCPWpHd1uzegIxY8X-bFD2HYIknGkg
+script: |
+  <script>
+    $(".da-field-buttons").addClass("continue-exit-buttons");
+  </script>
 ---
 mandatory: True
 code: |
@@ -130,6 +131,9 @@ code: |
   
   # email is sent once details have been reviewed
   report_email_sent = send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])
+  
+  # email is also sent to Amanda's email address
+  stats_email_sent = send_email(to="amanda.muller@flinders.edu.au", sender=sender, template=email_template, attachments=[report])
   
   # If data collection is to be turned on, then uncomment the line below
   #data_email_sent = send_email(to=data_collection, sender=sender, template=data_email_template)

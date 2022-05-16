@@ -1,19 +1,25 @@
 mandatory: True
 event: final_screen
-question: Final Report
+question: Record Complete
 subquestion: |
 
-  You have now completed your report.
-  Here is your finished document.
+  Here is your summary of the event.
   
-  <a class="btn btn-primary" href=${ report.url_for(attachment=True) }>Download Report</a>
+  <a class="btn btn-primary" href=${ report.url_for(attachment=True) }>Download Summary</a>
   
-  For your convenience, this report has also been emailed to the address you provided earlier.
+  For your convenience, this summary has also been emailed to the address you provided earlier.
   
-  **You can submit this report to the SA Commissioner for Equal Opportunity. This link is here to direct you:**
+  **You can use this summary to help you report to your state or territory's anti-discrimination commissioner or to the Australian Human Rights Commission.** Follow the links below to locate your state or territory's anti-discrimination commissioner:
   
-  <a href="https://www.eoc.sa.gov.au/complaints/making-a-complaint">SA Commissioner for Equal Opportunity</a>
+  <a href="https://www.ag.gov.au/rights-and-protections/human-rights-and-anti-discrimination/australias-anti-discrimination-law">State and Territory Human Rights Commissioners</a>
   
+  <a href="https://humanrights.gov.au/complaints/make-complaint">Human Rights Australia Complaints</a>
+  
+  <br/>
+  <hr>
+  
+  If you would like to participate in further research, please contact amanda.muller@flinders.edu.au
+
   <br/>
   <hr>
   ***If your experience has been traumatic or mentally distressing to you, please contact mental health services for support:***
@@ -45,7 +51,6 @@ subquestion: |
     >https://www.beyondblue.org.au/get-support/get-immediate-support</a
   >
   </p>
-
 
 allow emailing: False
 include attachment notice: False

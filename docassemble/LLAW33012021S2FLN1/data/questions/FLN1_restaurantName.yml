@@ -1,12 +1,12 @@
 question: |
-  What was the name of the food or drink Premises which ${pronoun} were refused entry from?
+  What was the name of the food/retail premises which ${pronoun} were refused entry from?
 subquestion: |
 
-  <div>Restaurant Name</div>
+  <div>Premises Name</div>
   
   
   <div class="resname">[FIELD eatery_StoreName]</div>
-  <div onclick="toggleHelp()" class="btn btn-info mt-3" id="tog-btn">Click here for more information</div>
+  <div onclick="toggleHelp()" class="btn btn-info mt-3" id="tog-btn">Definition of Premises</div>
   
   
   <div id="help-shown" class="bs-callout bs-callout-info" style="display: none"><p>
@@ -25,7 +25,6 @@ subquestion: |
   <br/>
 fields: 
   - Restaurant Name: eatery_StoreName
-    default: Example Cafe
 script: |
   <script>
   var node = document.getElementById("help-shown");
@@ -38,12 +37,12 @@ script: |
     if(hidden){
       node.style.display = "block";
       hidden = false;
-      btn.innerHTML = "Click here to hide information";
+      btn.innerHTML = "Definition of Premises";
     }
     else{
       node.style.display = "none";
       hidden = true;
-      btn.innerHTML = "Click here for more information";
+      btn.innerHTML = "Definition of Premises";
     }
   }
   </script>

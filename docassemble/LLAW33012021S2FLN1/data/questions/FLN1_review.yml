@@ -108,9 +108,7 @@ subquestion: |
     
 fields: 
   - SFNAME: s_fname
-    default : ${submitter.name.first}
   - SLNAME: s_lname
-    default : ${submitter.name.last}
   - RFNAME: refused_person.name.first
   - RLNAME: refused_person.name.last
   - EMAIL: refused_person.email

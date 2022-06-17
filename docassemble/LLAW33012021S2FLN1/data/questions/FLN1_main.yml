@@ -5,6 +5,40 @@ objects:
   - refused_person: Individual
   - submitter: Individual
   - sender: Individual
+  - pawrights_logo: DAStaticFile.using(filename='paws_rights_logo_transparent.png')
+---
+initial: true
+code: |
+  # Sets the logo in the header
+  set_parts(logo='<img src="' + pawrights_logo.url_for() + '" alt="Paw Rights Logo" style="height: 60px; width: 60px;">')
+---
+features:
+  css: FLN1_main.css
+  debug: False
+  hide standard menu: True
+---
+default screen parts:
+  post: |
+    <div style="display: flex; height: 200px; align-items: flex-end; flex-direction: row-reverse">
+    <div style="margin: 5px"><img alt="Flinders University Logo" src="https://staff.flinders.edu.au/etc.clientlibs/flinders/clientlibs/clientlib-site/resources/images/flinderuni_main_logo_black.png" height="40">
+    </div>
+    <div style="margin: 5px; text-align: right">
+    <cite><small><i>
+    Developed by Flinders University in collaboration with Amanda Muller and Ellen Fraser-Barbour
+    </i></small></cite>
+    </div>
+    </div>
+---
+metadata:
+  title: |
+    Paws Rights
+  description: |
+    A way to report a food or drink venue refusal in South Australia
+  authors:
+    - name: Robert Piovesan, Annalese Alvarez, Accacia Verco, Chris Power, Khevalin Parekh and Matthew Donnellan
+      organization: Flinders University
+  revision_date: 2021-10-14
+  exit url: https://www.flinders.edu.au/
 ---
 mandatory: True
 event: welcome_screen
@@ -23,36 +57,43 @@ subquestion: |
   **Furthermore, the user must consent to the collection of their data.**
 buttons:
   - I agree and wish to continue: continue
-  - No I do not agree and with to exit: exit
+  - No I do not agree and wish to exit: exit
+    url: https://humanrights.gov.au/complaints/complaint-guides/complaints-under-disability-discrimination-act?fbclid=IwAR1DLEd5tz0lo1F-iN_tEa8ULWEFETCPWpHd1uzegIxY8X-bFD2HYIknGkg
 ---
-
 mandatory: True
 code: |
+  # Creating object in the javascript console from the postcodes json file
   log("var postcodesDB = " + json.dumps(postcodes.as_serializable()) + ";", "javascript")
   
-  track_location = submitter.location.status()
-  
+  # sets up sender object details for final email
   sender.name.first = "Paw Rights"
   sender.email = "docassemble-no-reply@flinders.edu.au"
 
+  # Getting current time so that the incident time can default to this
   from datetime import date
   from datetime import datetime
   now = datetime.now()
   todays_date = str(date.today())
-  current_time = now.strftime("%H:%M:%S")
+  current_time = now.strftime("%H:%M")
   
+  # Defining the general flow of the application
   if(who_is_submitter == "Myself"):
     selfsubmitted = True
+    rp_namequestion = "What is your full name?"
     phonenumberquestion = "What is your phone number?"
     emailquestion = "What is your email address?"
-    pronoun = "you"
-    refused_person.name.first = submitter.name.first
-    refused_person.name.last = submitter.name.last
+    pronoun = "you" # Defines which pronoun to use in questions
+    refused_person.name.first
+    refused_person.name.last
+    # if the application is self submitted, then the submitter is the refused person
+    submitter.name.first = refused_person.name.first 
+    submitter.name.last = refused_person.name.last
   else:
     selfsubmitted = False
+    rp_namequestion = "Please enter the full name of the person who has been refused entry?"
     phonenumberquestion = "What is the phone number of the refused person?"
     emailquestion = "What is the email address of the refused person?"
-    pronoun = "they"
+    pronoun = "they" # Defines which pronoun to use in questions
     submitter.name.first
     submitter.name.last
     refused_person.name.first
@@ -64,20 +105,26 @@ code: |
   eatery_Address # Same question as other address details
   inc_date
   inc_time
+  inc_time_dateobj = inc_time.strftime("%H:%M")
   if(staffHasReason):
    staffReason
   else:
-    staffReason = "N/A"
+    staffReason = " "
   if(staffRequestedPaperwork):
     IDWasShown
   else:
-    IDWasShown = "N/A"
+    IDWasShown = False
   if(supporting_evidence):
     attached_evidence
   else:
-    attached_evidence = []
-    
-  reviewed
+    attached_evidence = [] 
+  
+  reviewed # this prompts the review page to open
+  
+  # This string is created to minimize the markup in the jinja doc, hence improving formatting
+  rp_name = refused_person.name.first + " " + refused_person.name.last
+  
+  # email is sent once details have been reviewed
   send_email(to=refused_person, sender=sender, template=email_template, attachments=[report])
 ---
 include:

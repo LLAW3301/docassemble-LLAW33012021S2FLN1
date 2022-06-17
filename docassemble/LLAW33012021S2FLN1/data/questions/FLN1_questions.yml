@@ -1,57 +1,107 @@
 features:
   css: question.css
 ---
+images:
+  self: self_w.png
+  partner: partner_w.png
+  friend: friend_w.png
+  carer: carer_w.png
+  relative: relative_w.png
+  other: other_w.png
+---
 include:
   - FLN1_location.yml
-  - FLN1_review.yml
   - FLN1_restaurantName.yml
   - FLN1_finalScreen.yml
 ---
 objects from file:
   - postcodes: postcodes.json
 ---
+attachment:
+  name: report
+  filename: food-refusal-report-${todays_date}
+  docx template file: Jinja.docx
+  variable name: report
+  valid formats:
+    - pdf
+---
+template: email_template
+subject: |
+  Food Refusal Report | Paws Rights
+content: |
+  Greetings, ${refused_person.name.first}
+
+  Your food refusal report is attached.
+
+  Thank you,
+  The Paws Rights Team
+---
 question: Who is submitting the report?
 field: who_is_submitter
 buttons:
   - Myself: Myself
+    image: self
   - Partner: Partner
+    image: partner
   - Friend: Friend
+    image: friend
   - Carer: Carer
+    image: carer
   - Relative: Relative
+    image: relative
   - Other: Other
+    image: other
 ---
-question: Please enter the full name of the person who has been refused entry?
+question: ${rp_namequestion}
 fields:
   - First Name: refused_person.name.first
+    default: Robert
   - Last Name: refused_person.name.last
+    default: Piovesan
 ---
 question: What is your full name?
 fields:
   - First Name: submitter.name.first
+    default: James
   - Last Name: submitter.name.last
+    default: Smith
 ---
 question: ${phonenumberquestion}
 fields:
   - Phone Number: rp_phoneno
+    default: 0491 577 644
+    datatype: raw
+comment: |
+  0491 576 398 is a fake phone number from:
+  https://www.acma.gov.au/choose-your-phone-number#use-phone-numbers-for-fiction
 ---
 question: ${emailquestion}
 fields:
   - Email: refused_person.email
     datatype: email
+    default: piov0007@flinders.edu.au
 ---
 question: "Did the staff state their reason for the refusal?"
-yesno: staffHasReason
----
-question: "What was said by the staff during the refusal?"
 fields:
-  - Details: staffReason
+  - "Yes/No" : staffHasReason
+    datatype: yesnoradio
+  - "What was said by the staff during the refusal?" : staffReason
     input type: area
+    default: |
+      No dogs are allowed due to allergies
+    show if:
+      variable: staffHasReason
+      is: True
 ---
 question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
-yesno: staffRequestedPaperwork
----
-question: "Was ID provided?"
-yesno: IDWasShown
+fields:
+  - "Yes/No" : staffRequestedPaperwork
+    datatype: yesnoradio
+  - "Was ID provided?" : IDWasShown
+    datatype: yesnoradio
+    show if:
+      variable: staffRequestedPaperwork
+      is: True
 ---
 question: "When did the incident occur?"
 subquestion: "This defaults to today’s date, but you can edit it if needed"
@@ -73,29 +123,14 @@ question: Do you have any supporting evidence you want to attach?
 yesno: supporting_evidence
 ---
 question: |
-  Please add any files e.g. screenshots, photos, your documentation.
+  Please attach any supporting files e.g. screenshots or photos
+subquestion: |
+  <i>accepted file type: <b>jpeg</b></i>
 fields:
   - Attachments: attached_evidence
     datatype: files
     accept: |
-      "image/jpeg, image/png"
+      "image/jpeg"
 ---
-
-attachment:
-  name: report
-  filename: food-refusal-report-${todays_date}
-  docx template file: Jinja.docx
-  variable name: report
-  valid formats:
-    - pdf
----
-template: email_template
-subject: |
-  Food Refusal Report | Paws Rights
-content: |
-  Greetings, ${refused_person.name.first}
-
-  Your food refusal report is attached.
-
-  Thank you,
-  The Paws Rights Team
+include:
+  - FLN1_review.yml

@@ -1,0 +1,108 @@
+.navbar{
+  /* Flinders gold */
+  background-color: rgb(255,211,0) !important; /* rgb(255,217,102) */
+}
+.navbar .navbar-brand{
+  color : #000;
+  font-weight: bolder;
+  font-size: 2.0em;
+}
+.navbar .navbar-brand:hover{
+  color: #000;
+}
+
+.navbar .nav-item a{
+  color: #000 !important;
+}
+
+.navbar .dropdown-menu{
+  background-color: rgba(255,255,255,0.3);
+}
+.dropdown-item:hover{
+  background-color: rgba(255,255,255,0.3);
+}
+.navbar-brand .media {
+  margin-top: -0.1em;
+}
+.navbar-brand {
+  line-height: 1em;
+  padding: 0em !important
+}
+
+/* style the back button */
+.navbar form button{
+  border: 0;
+  margin-right: 0.5em;
+  color: #fff !important;
+  /* Flinders navy */
+  background-color: rgba(0, 47, 96) !important;
+  border-color: rgba(0,0,0,0) !important;
+  border-radius: 0.25rem !important;
+  font-size: 1.1rem;
+  padding: 0.275rem 0.85rem 0.375rem 0.65rem;
+}
+.navbar form button:hover{
+  color: #fff !important;
+  /* Flinders navy, darkened */
+  background-color: rgba(0, 24, 48) !important;
+  border-color: rgba(0,0,0,0) !important;
+  border-radius: 0.25rem !important;
+}
+.navbar form button:focus {
+  outline-width: 0px;
+  outline-color: rgb(255, 255, 255);
+  outline-style: none;
+  outline-width: 0px;
+  box-shadow: 0 0 0 0.2rem #268fff80 !important;
+}
+
+/* use dark blue for most primary buttons */
+.btn-primary {
+  /* Flinders navy */
+  background-color: rgba(0, 47, 96) !important;
+  border-color: rgba(0, 47, 96) !important; 
+}
+.btn-primary:hover {
+  /* Flinders navy, darkened */
+  background-color: rgba(0, 24, 48) !important; /* #1C0359 */
+  border-color: rgba(0, 24, 48) !important; /* #1C0359 */
+}
+
+.da-pad-for-navbar  { padding-top: 76px; }
+.da-top-for-navbar  { top: 76px;         }
+
+/* enlarge buttons on most screens */
+.form-actions, .refusal-map-container {
+  font-size: 1.2em;
+}
+.form-actions .btn, .large-buttons .btn {
+  font-size: 1em;
+  padding: 0.375em 0.75em 0.375em 0.75em;
+}
+
+/* Styling for the drop down on the review page */
+a span.pdcaretopen {
+    display: inline;
+}
+
+a span.pdcaretclosed {
+    display: none;
+}
+
+a.collapsed .pdcaretopen {
+    display: none;
+}
+
+a.collapsed .pdcaretclosed {
+    display: inline;
+}
+
+/* Setting the image background color */
+.btn-da-custom {
+    background-color: rgba(0, 47, 96) !important;
+    color: white !important;
+}
+
+.btn-da-custom:hover {
+    background-color: #001429 !important;
+}

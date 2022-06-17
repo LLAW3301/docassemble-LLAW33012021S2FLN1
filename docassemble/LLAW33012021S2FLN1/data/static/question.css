@@ -45,10 +45,12 @@
     margin-left: 0;
     display: block;
     border-radius: 5px;
-    background-color: #abfffe;
+    background-color: rgba(0, 47, 96) !important;
+    color: white;
+    cursor: pointer;
 }
 .postcode-item:hover {
-    background-color: #c9fffe;
+    background-color: rgba(0, 24, 48) !important;
 }
 
 .tab{

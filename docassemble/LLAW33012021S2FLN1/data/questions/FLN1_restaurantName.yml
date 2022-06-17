@@ -25,7 +25,6 @@ subquestion: |
   <br/>
 fields: 
   - Restaurant Name: eatery_StoreName
-    default: Example Cafe
 script: |
   <script>
   var node = document.getElementById("help-shown");

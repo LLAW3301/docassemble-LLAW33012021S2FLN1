@@ -55,31 +55,22 @@ buttons:
 question: ${rp_namequestion}
 fields:
   - First Name: refused_person.name.first
-    default: Robert
   - Last Name: refused_person.name.last
-    default: Piovesan
 ---
 question: What is your full name?
 fields:
   - First Name: submitter.name.first
-    default: James
   - Last Name: submitter.name.last
-    default: Smith
 ---
 question: ${phonenumberquestion}
 fields:
   - Phone Number: rp_phoneno
-    default: 0491 577 644
     datatype: raw
-comment: |
-  0491 576 398 is a fake phone number from:
-  https://www.acma.gov.au/choose-your-phone-number#use-phone-numbers-for-fiction
 ---
 question: ${emailquestion}
 fields:
   - Email: refused_person.email
     datatype: email
-    default: piov0007@flinders.edu.au
 ---
 question: "Did the staff state their reason for the refusal?"
 fields:
@@ -87,8 +78,6 @@ fields:
     datatype: yesnoradio
   - "What was said by the staff during the refusal?" : staffReason
     input type: area
-    default: |
-      No dogs are allowed due to allergies
     show if:
       variable: staffHasReason
       is: True
